@@ -1,5 +1,4 @@
 abstract class Zone<PossibleAmountsAmount extends number> implements IZone {
-    private static readonly indexDescription: string = AMOUNT_OF_PLAYERS_DESCRIPTION;
     private static readonly multipliersDescription: string =
         "The performance multipliers";
 
@@ -14,10 +13,10 @@ abstract class Zone<PossibleAmountsAmount extends number> implements IZone {
 
     public getMultiplier(playersInZoneAmount: number): number {
         if (Number.isSafeInteger(playersInZoneAmount)) {
-            throw new NotAnIntergerError(Zone.indexDescription);
+            throw new NotAnIntergerError(AMOUNT_OF_PLAYERS_DESCRIPTION);
         }
         if (this.size < playersInZoneAmount || playersInZoneAmount < 0) {
-            throw new IndexError(Zone.indexDescription, this.size);
+            throw new IndexError(AMOUNT_OF_PLAYERS_DESCRIPTION, this.size);
         }
         if (this.multipliers === null) {
             throw new CanNotBeNullError(Zone.multipliersDescription);

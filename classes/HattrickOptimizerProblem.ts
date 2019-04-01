@@ -1,6 +1,4 @@
 class HattrickOptimizerProblem {
-    private static amountOfPlayersDescription: string = AMOUNT_OF_PLAYERS_DESCRIPTION;
-
     public constructor(
         private readonly players: ReadonlyArray<Player>,
         private readonly formations: ReadonlyArray<Formation>,
@@ -27,7 +25,7 @@ class HattrickOptimizerProblem {
         let playersUses: Array<PlayerVariableExpression>;
         if (amountOfPlayers <= 10) {
             throw new NotHighEnoughError(
-                HattrickOptimizerProblem.amountOfPlayersDescription,
+                AMOUNT_OF_PLAYERS_DESCRIPTION,
                 (10).toString(),
                 false
             );
