@@ -28,7 +28,8 @@ class HattrickOptimizerProblem {
         if (amountOfPlayers <= 10) {
             throw new NotHighEnoughError(
                 HattrickOptimizerProblem.amountOfPlayersDescription,
-                (10).toString()
+                (10).toString(),
+                false
             );
         }
         for (let formation of this.formations) {
