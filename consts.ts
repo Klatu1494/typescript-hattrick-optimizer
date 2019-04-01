@@ -1,3 +1,5 @@
+const AMOUNT_OF_PLAYERS_DESCRIPTION: string = "The amount of players";
+const DOT: string = ".";
 const FORM_MODIFIERS: ReadonlyArray<number> = [
     0,
     0.35,

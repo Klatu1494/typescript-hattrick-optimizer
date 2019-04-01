@@ -1,5 +1,5 @@
 class HattrickOptimizerProblem {
-    private static amountOfPlayersDescription: string = CommonStrings.getAmountOfPlayersDescription();
+    private static amountOfPlayersDescription: string = AMOUNT_OF_PLAYERS_DESCRIPTION;
 
     public constructor(
         private readonly players: ReadonlyArray<Player>,

@@ -1,5 +1,5 @@
 abstract class Zone<PossibleAmountsAmount extends number> implements IZone {
-    private static readonly indexDescription: string = CommonStrings.getAmountOfPlayersDescription();
+    private static readonly indexDescription: string = AMOUNT_OF_PLAYERS_DESCRIPTION;
     private static readonly multipliersDescription: string =
         "The performance multipliers";
 
