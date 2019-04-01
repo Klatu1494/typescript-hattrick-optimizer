@@ -31,16 +31,31 @@ class HattrickOptimizerProblem {
             );
         }
         for (let formation of this.formations) {
+            let filledPositions: Map<IZone, Set<NearestSide>> = new Map();
             for (let playersFulfillingRoleAmount of formation.getPlayersFulfillingRolesAmount()) {
                 let role: Role = playersFulfillingRoleAmount[0];
-                let amountOfPlayersFulfillingRole: number =
-                    playersFulfillingRoleAmount[1];
-                //TODO: initialize expressions
-                for (let i: number = 1; i < amountOfPlayers; i++) {
-                    let currentPlayer: Player = this.players[i];
-                    let currentPlayerVariable: PlayerVariableExpression = new PlayerVariableExpression(
-                        currentPlayer
-                    );
+                let zone: IZone = role.getZone();
+                if (!filledPositions.has(zone)) {
+                    filledPositions.set(zone, new Set());
+                }
+                for (let combination of Combinator.getInstance().getCombinations(
+                    role.getPossibleNearestSides(),
+                    playersFulfillingRoleAmount[1]
+                )) {
+                    for (let nearestSide of combination) {
+                        let zoneFilledPositions: Set<
+                            NearestSide
+                        > = filledPositions.get(zone);
+                        zoneFilledPositions.add(nearestSide);
+                        //TODO: initialize expressions
+                        for (let i: number = 1; i < amountOfPlayers; i++) {
+                            let currentPlayer: Player = this.players[i];
+                            let currentPlayerVariable: PlayerVariableExpression = new PlayerVariableExpression(
+                                currentPlayer
+                            );
+                        }
+                        zoneFilledPositions.delete(nearestSide);
+                    }
                 }
             }
         }
