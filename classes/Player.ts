@@ -1,5 +1,5 @@
 class Player {
-    private performanceByRole: Map<Role, Map<NearestSide, PlayerPerformance>>;
+    private performances: Map<Role, Map<NearestSide, PlayerPerformance>>;
 
     constructor(
         private readonly name: string,
@@ -24,7 +24,7 @@ class Player {
                 );
             }
         }
-        this.performanceByRole = performanceByRole;
+        this.performances = performanceByRole;
     }
 
     public getName(): string {
@@ -61,5 +61,12 @@ class Player {
 
     public isTechnical(): boolean {
         return this.technical;
+    }
+
+    public getPerformance(
+        role: Role,
+        nearestSide: NearestSide
+    ): PlayerPerformance {
+        return this.performances.get(role).get(nearestSide);
     }
 }
