@@ -2,7 +2,7 @@ class NotHighEnoughError extends RangeError {
     private static readonly hint: string = " must be higher than ";
     private static readonly endingDot: string = DOT;
 
-    public constructor(entity: string, minimumValue: number) {
+    public constructor(entity: string, minimumValue: string) {
         super(
             entity +
                 NotHighEnoughError.hint +

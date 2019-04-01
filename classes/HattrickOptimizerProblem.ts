@@ -25,10 +25,10 @@ class HattrickOptimizerProblem {
         let rightAttackExpression: IDifferentiableExpression;
         let firstPlayer: Player;
         let playersUses: Array<PlayerVariableExpression>;
-        if (amountOfPlayers < 11) {
+        if (amountOfPlayers <= 10) {
             throw new NotHighEnoughError(
                 HattrickOptimizerProblem.amountOfPlayersDescription,
-                11
+                (10).toString()
             );
         }
         for (let formation of this.formations) {
