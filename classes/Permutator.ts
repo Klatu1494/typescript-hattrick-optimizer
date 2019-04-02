@@ -60,7 +60,7 @@ class Permutator {
         combinationsLength: number
     ) {
         let elementsLength: number = elements.length;
-        for (let i = currentIndex; i < elementsLength; i++) {
+        for (let i: number = currentIndex; i < elementsLength; i++) {
             let newCombination: Array<T> = partialCombination.slice(0);
             newCombination.push(elements[i]);
             if (newCombination.length === combinationsLength) {
