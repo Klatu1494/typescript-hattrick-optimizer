@@ -1,13 +1,13 @@
-class Premutator {
-    private static instance: Premutator = null;
+class Permutator {
+    private static instance: Permutator = null;
     private static readonly combinationsLengthDescription: string =
         "The combinations length";
 
     private constructor() {}
 
-    public static getInstance(): Premutator {
+    public static getInstance(): Permutator {
         if (this.instance === null) {
-            this.instance = new Premutator();
+            this.instance = new Permutator();
         }
         return this.instance;
     }
@@ -27,12 +27,12 @@ class Premutator {
         let elementsArray: Array<T>;
         if (!Number.isSafeInteger(combinationsLength)) {
             throw new NotAnIntergerError(
-                Premutator.combinationsLengthDescription
+                Permutator.combinationsLengthDescription
             );
         }
         if (combinationsLength <= 0) {
             throw new NotHighEnoughError(
-                Premutator.combinationsLengthDescription,
+                Permutator.combinationsLengthDescription,
                 (0).toString(),
                 false
             );
