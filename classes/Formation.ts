@@ -43,7 +43,7 @@ class Formation {
         return (
             isValid &&
             0 < playersInZoneAmounts.get(GoalkeepersZone.getInstance()) &&
-            totalPlayers === 11
+            totalPlayers === AMOUNT_OF_PLAYERS_IN_A_FORMATION
         );
     }
 

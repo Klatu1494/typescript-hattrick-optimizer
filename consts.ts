@@ -1,3 +1,4 @@
+const AMOUNT_OF_PLAYERS_IN_A_FORMATION: number = 11;
 const AMOUNT_OF_PLAYERS_DESCRIPTION: string = "The amount of players";
 const DOT: string = ".";
 const FORM_MODIFIERS: ReadonlyArray<number> = [
