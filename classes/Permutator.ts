@@ -1,13 +1,13 @@
-class Combinator {
-    private static instance: Combinator = null;
+class Premutator {
+    private static instance: Premutator = null;
     private static readonly combinationsLengthDescription: string =
         "The combinations length";
 
     private constructor() {}
 
-    public static getInstance(): Combinator {
+    public static getInstance(): Premutator {
         if (this.instance === null) {
-            this.instance = new Combinator();
+            this.instance = new Premutator();
         }
         return this.instance;
     }
@@ -19,20 +19,20 @@ class Combinator {
      * elements that will compose the combinations.
      * @param combinationsLength The combinations size.
      */
-    public getCombinations<T>(
+    public getPermutations<T>(
         elements: Iterable<T>,
         combinationsLength: number
-    ): ReadonlyArray<ReadonlySet<T>> {
-        let combinations: Array<ReadonlySet<T>>;
+    ): ReadonlyArray<ReadonlyArray<T>> {
+        let combinations: Array<ReadonlyArray<T>>;
         let elementsArray: Array<T>;
         if (!Number.isSafeInteger(combinationsLength)) {
             throw new NotAnIntergerError(
-                Combinator.combinationsLengthDescription
+                Premutator.combinationsLengthDescription
             );
         }
         if (combinationsLength <= 0) {
             throw new NotHighEnoughError(
-                Combinator.combinationsLengthDescription,
+                Premutator.combinationsLengthDescription,
                 (0).toString(),
                 false
             );
@@ -45,7 +45,7 @@ class Combinator {
         this.selectElements<T>(
             elementsArray,
             combinations,
-            new Set(),
+            [],
             0,
             combinationsLength
         );
@@ -54,17 +54,16 @@ class Combinator {
 
     private selectElements<T>(
         elements: ReadonlyArray<T>,
-        combinations: Array<ReadonlySet<T>>,
-        partialCombination: ReadonlySet<T>,
+        combinations: Array<ReadonlyArray<T>>,
+        partialCombination: ReadonlyArray<T>,
         currentIndex: number,
         combinationsLength: number
     ) {
         let elementsLength: number = elements.length;
         for (let i = currentIndex; i < elementsLength; i++) {
-            let newCombination: Set<T> = new Set(partialCombination).add(
-                elements[i]
-            );
-            if (newCombination.size === combinationsLength) {
+            let newCombination: Array<T> = partialCombination.slice(0);
+            newCombination.push(elements[i]);
+            if (newCombination.length === combinationsLength) {
                 combinations.push(newCombination);
             } else {
                 this.selectElements<T>(

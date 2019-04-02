@@ -41,7 +41,7 @@ class HattrickOptimizerProblem {
                 if (!filledPositions.has(zone)) {
                     filledPositions.set(zone, new Set());
                 }
-                for (let combination of Combinator.getInstance().getCombinations(
+                for (let combination of Premutator.getInstance().getPermutations(
                     role.getPossibleNearestSides(),
                     playersFulfillingRoleAmount[1]
                 )) {
