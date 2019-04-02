@@ -25,8 +25,9 @@ class Formation {
         let i: number = 0;
         let isValid: boolean = true;
         let totalPlayers: number = 0;
-        let zonesWithAtLeastOnePlayer: Array<IZone>;
-        let playersInZoneAmounts = this.playersInZoneAmounts;
+        let zonesWithAtLeastOnePlayer: Array<IZone> = [];
+        let playersInZoneAmounts: Map<IZone, number> = this
+            .playersInZoneAmounts;
 
         for (let playersInZoneAmount of playersInZoneAmounts) {
             zonesWithAtLeastOnePlayer.push(playersInZoneAmount[0]);
