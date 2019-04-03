@@ -1,8 +1,14 @@
 abstract class Role {
+    private static nextId: number = 1;
+    private id: number;
+
     protected constructor(
         private readonly zone: IZone,
         private readonly possibleNearestSides: ReadonlyArray<NearestSide>
-    ) {}
+    ) {
+        this.id = Role.nextId;
+        Role.nextId++;
+    }
 
     protected abstract getLeftDefenseContribution(
         player: Player,
@@ -53,5 +59,9 @@ abstract class Role {
 
     public getPossibleNearestSides(): ReadonlyArray<NearestSide> {
         return this.possibleNearestSides;
+    }
+
+    public getId(): number {
+        return this.id;
     }
 }
