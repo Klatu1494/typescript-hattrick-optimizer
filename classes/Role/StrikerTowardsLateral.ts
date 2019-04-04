@@ -1,12 +1,16 @@
 class StrikerTowardsLateral extends Role {
     private static instance: StrikerTowardsLateral = null;
 
+    private constructor() {
+        super("STTL", StrikersZone.getInstance(), [
+            Left.getInstance(),
+            Right.getInstance()
+        ]);
+    }
+
     public static getInstance(): StrikerTowardsLateral {
         if (this.instance === null) {
-            this.instance = new StrikerTowardsLateral(
-                StrikersZone.getInstance(),
-                [Left.getInstance(), Right.getInstance()]
-            );
+            this.instance = new StrikerTowardsLateral();
         }
         return this.instance;
     }

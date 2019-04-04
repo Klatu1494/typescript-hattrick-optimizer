@@ -1,12 +1,16 @@
 class CentralDefenderTowardsLateral extends Role {
     private static instance: CentralDefenderTowardsLateral = null;
 
+    private constructor() {
+        super("CDTL", CentralDefendersZone.getInstance(), [
+            Left.getInstance(),
+            Right.getInstance()
+        ]);
+    }
+
     public static getInstance(): CentralDefenderTowardsLateral {
         if (this.instance === null) {
-            this.instance = new CentralDefenderTowardsLateral(
-                CentralDefendersZone.getInstance(),
-                [Left.getInstance(), Right.getInstance()]
-            );
+            this.instance = new CentralDefenderTowardsLateral();
         }
         return this.instance;
     }

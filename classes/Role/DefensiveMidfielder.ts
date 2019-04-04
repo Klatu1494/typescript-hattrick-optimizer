@@ -1,12 +1,17 @@
 class DefensiveMidfielder extends Role {
     private static instance: DefensiveMidfielder = null;
 
+    private constructor() {
+        super("DMF", MidfieldersZone.getInstance(), [
+            Left.getInstance(),
+            None.getInstance(),
+            Right.getInstance()
+        ]);
+    }
+
     public static getInstance(): DefensiveMidfielder {
         if (this.instance === null) {
-            this.instance = new DefensiveMidfielder(
-                MidfieldersZone.getInstance(),
-                [Left.getInstance(), None.getInstance(), Right.getInstance()]
-            );
+            this.instance = new DefensiveMidfielder();
         }
         return this.instance;
     }

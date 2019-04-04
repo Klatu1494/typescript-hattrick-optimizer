@@ -1,12 +1,17 @@
 class CentralDefender extends Role {
     private static instance: CentralDefender = null;
 
+    private constructor() {
+        super("CD", CentralDefendersZone.getInstance(), [
+            Left.getInstance(),
+            None.getInstance(),
+            Right.getInstance()
+        ]);
+    }
+
     public static getInstance(): CentralDefender {
         if (this.instance === null) {
-            this.instance = new CentralDefender(
-                CentralDefendersZone.getInstance(),
-                [Left.getInstance(), None.getInstance(), Right.getInstance()]
-            );
+            this.instance = new CentralDefender();
         }
         return this.instance;
     }

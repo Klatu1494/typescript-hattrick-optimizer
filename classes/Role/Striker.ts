@@ -1,13 +1,17 @@
 class Striker extends Role {
     private static instance: Striker = null;
 
+    private constructor() {
+        super("ST", StrikersZone.getInstance(), [
+            Left.getInstance(),
+            None.getInstance(),
+            Right.getInstance()
+        ]);
+    }
+
     public static getInstance(): Striker {
         if (this.instance === null) {
-            this.instance = new Striker(StrikersZone.getInstance(), [
-                Left.getInstance(),
-                None.getInstance(),
-                Right.getInstance()
-            ]);
+            this.instance = new Striker();
         }
         return this.instance;
     }

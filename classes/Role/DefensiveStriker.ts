@@ -1,13 +1,17 @@
 class DefensiveStriker extends Role {
     private static instance: DefensiveStriker = null;
 
+    private constructor() {
+        super("DST", StrikersZone.getInstance(), [
+            Left.getInstance(),
+            None.getInstance(),
+            Right.getInstance()
+        ]);
+    }
+
     public static getInstance(): DefensiveStriker {
         if (this.instance === null) {
-            this.instance = new DefensiveStriker(StrikersZone.getInstance(), [
-                Left.getInstance(),
-                None.getInstance(),
-                Right.getInstance()
-            ]);
+            this.instance = new DefensiveStriker();
         }
         return this.instance;
     }

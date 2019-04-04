@@ -1,12 +1,16 @@
 class MidfielderTowardsLateral extends Role {
     private static instance: MidfielderTowardsLateral = null;
 
+    private constructor() {
+        super("MFTL", MidfieldersZone.getInstance(), [
+            Left.getInstance(),
+            Right.getInstance()
+        ]);
+    }
+
     public static getInstance(): MidfielderTowardsLateral {
         if (this.instance === null) {
-            this.instance = new MidfielderTowardsLateral(
-                MidfieldersZone.getInstance(),
-                [Left.getInstance(), Right.getInstance()]
-            );
+            this.instance = new MidfielderTowardsLateral();
         }
         return this.instance;
     }

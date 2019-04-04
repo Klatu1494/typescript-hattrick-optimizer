@@ -1,12 +1,16 @@
 class OffensiveWing extends Role {
     private static instance: OffensiveWing = null;
 
+    private constructor() {
+        super("OW", WingsZone.getInstance(), [
+            Left.getInstance(),
+            Right.getInstance()
+        ]);
+    }
+
     public static getInstance(): OffensiveWing {
         if (this.instance === null) {
-            this.instance = new OffensiveWing(WingsZone.getInstance(), [
-                Left.getInstance(),
-                Right.getInstance()
-            ]);
+            this.instance = new OffensiveWing();
         }
         return this.instance;
     }

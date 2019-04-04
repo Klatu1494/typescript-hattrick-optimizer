@@ -1,12 +1,17 @@
 class OffensiveMidfielder extends Role {
     private static instance: OffensiveMidfielder = null;
 
+    private constructor() {
+        super("OMF", MidfieldersZone.getInstance(), [
+            Left.getInstance(),
+            None.getInstance(),
+            Right.getInstance()
+        ]);
+    }
+
     public static getInstance(): OffensiveMidfielder {
         if (this.instance === null) {
-            this.instance = new OffensiveMidfielder(
-                MidfieldersZone.getInstance(),
-                [Left.getInstance(), None.getInstance(), Right.getInstance()]
-            );
+            this.instance = new OffensiveMidfielder();
         }
         return this.instance;
     }

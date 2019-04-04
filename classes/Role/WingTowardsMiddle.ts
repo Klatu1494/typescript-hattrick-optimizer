@@ -1,12 +1,16 @@
 class WingTowardsMiddle extends Role {
     private static instance: WingTowardsMiddle = null;
 
+    private constructor() {
+        super("WTM", WingsZone.getInstance(), [
+            Left.getInstance(),
+            Right.getInstance()
+        ]);
+    }
+
     public static getInstance(): WingTowardsMiddle {
         if (this.instance === null) {
-            this.instance = new WingTowardsMiddle(WingsZone.getInstance(), [
-                Left.getInstance(),
-                Right.getInstance()
-            ]);
+            this.instance = new WingTowardsMiddle();
         }
         return this.instance;
     }

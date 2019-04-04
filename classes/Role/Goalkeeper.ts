@@ -1,11 +1,13 @@
 class Goalkeeper extends Role {
     private static instance: Goalkeeper = null;
 
+    private constructor() {
+        super("GK", GoalkeepersZone.getInstance(), [None.getInstance()]);
+    }
+
     public static getInstance(): Goalkeeper {
         if (this.instance === null) {
-            this.instance = new Goalkeeper(GoalkeepersZone.getInstance(), [
-                None.getInstance()
-            ]);
+            this.instance = new Goalkeeper();
         }
         return this.instance;
     }

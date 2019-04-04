@@ -1,12 +1,16 @@
 class LateralDefenderTowardsMiddle extends Role {
     private static instance: LateralDefenderTowardsMiddle = null;
 
+    private constructor() {
+        super("LDTM", LateralDefendersZone.getInstance(), [
+            Left.getInstance(),
+            Right.getInstance()
+        ]);
+    }
+
     public static getInstance(): LateralDefenderTowardsMiddle {
         if (this.instance === null) {
-            this.instance = new LateralDefenderTowardsMiddle(
-                LateralDefendersZone.getInstance(),
-                [Left.getInstance(), Right.getInstance()]
-            );
+            this.instance = new LateralDefenderTowardsMiddle();
         }
         return this.instance;
     }

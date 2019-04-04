@@ -3,6 +3,7 @@ abstract class Role {
     private id: number;
 
     protected constructor(
+        private readonly code: string,
         private readonly zone: IZone,
         private readonly possibleNearestSides: ReadonlyArray<NearestSide>
     ) {
@@ -63,5 +64,9 @@ abstract class Role {
 
     public getId(): number {
         return this.id;
+    }
+
+    public getCode(): string {
+        return this.code;
     }
 }

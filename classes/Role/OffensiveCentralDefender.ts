@@ -1,12 +1,17 @@
 class OffensiveCentralDefender extends Role {
     private static instance: OffensiveCentralDefender = null;
 
+    private constructor() {
+        super("OCD", CentralDefendersZone.getInstance(), [
+            Left.getInstance(),
+            None.getInstance(),
+            Right.getInstance()
+        ]);
+    }
+
     public static getInstance(): OffensiveCentralDefender {
         if (this.instance === null) {
-            this.instance = new OffensiveCentralDefender(
-                CentralDefendersZone.getInstance(),
-                [Left.getInstance(), None.getInstance(), Right.getInstance()]
-            );
+            this.instance = new OffensiveCentralDefender();
         }
         return this.instance;
     }

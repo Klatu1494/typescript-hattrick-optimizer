@@ -1,12 +1,16 @@
 class LateralDefender extends Role {
     private static instance: LateralDefender = null;
 
+    private constructor() {
+        super("LD", LateralDefendersZone.getInstance(), [
+            Left.getInstance(),
+            Right.getInstance()
+        ]);
+    }
+
     public static getInstance(): LateralDefender {
         if (this.instance === null) {
-            this.instance = new LateralDefender(
-                LateralDefendersZone.getInstance(),
-                [Left.getInstance(), Right.getInstance()]
-            );
+            this.instance = new LateralDefender();
         }
         return this.instance;
     }
