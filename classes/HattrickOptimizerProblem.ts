@@ -2,7 +2,6 @@ class HattrickOptimizerProblem {
     public constructor(
         private readonly players: ReadonlyArray<Player>,
         private readonly formations: ReadonlyArray<Formation>,
-        private readonly restrictions: ReadonlyArray<Restriction>,
         private readonly expectedLeftDefense: number,
         private readonly expectedCentralDefense: number,
         private readonly expectedRightDefense: number,
@@ -35,6 +34,8 @@ class HattrickOptimizerProblem {
         }
         for (let formation of this.formations) {
             let filledPositions: Map<IZone, Set<NearestSide>> = new Map();
+            let playersUses: Array<PlayerVariableExpression> = [];
+            let restrictions: Array<Restriction> = [];
             for (let playersFulfillingRoleAmount of formation.getPlayersFulfillingRolesAmount()) {
                 let role: Role = playersFulfillingRoleAmount[0];
                 let zone: IZone = role.getZone();
@@ -70,7 +71,6 @@ class HattrickOptimizerProblem {
                         let rightAttackExpression: IDifferentiableExpression = new ConstantExpression(
                             0
                         );
-                        let playersUses: Array<PlayerVariableExpression>;
                         zoneFilledPositions.add(nearestSide);
                         for (let currentPlayer of this.players) {
                             let currentPlayerPerformance: PlayerPerformance = currentPlayer.getPerformance(
@@ -80,6 +80,7 @@ class HattrickOptimizerProblem {
                             let currentPlayerVariable: PlayerVariableExpression = new PlayerVariableExpression(
                                 currentPlayer
                             );
+                            playersUses.push(currentPlayerVariable);
                             leftDefenseExpression = new DifferentiableSum(
                                 leftDefenseExpression,
                                 getValueTerm(
